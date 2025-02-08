@@ -1,0 +1,23 @@
+From: Birger Schacht <birger@rantanplan.org>
+Date: Sun, 7 Jul 2019 19:40:38 +0200
+Subject: [PATCH] Disable 002_cli_devices.sh test
+
+Because this test needs elevated privileges which some build systems
+don't provide.
+---
+ src/Tests/UseCase/002_cli_devices.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/Tests/UseCase/002_cli_devices.sh b/src/Tests/UseCase/002_cli_devices.sh
+index d9cb275..ccb40f0 100755
+--- a/src/Tests/UseCase/002_cli_devices.sh
++++ b/src/Tests/UseCase/002_cli_devices.sh
+@@ -22,6 +22,8 @@
+ # dummy_hcd modules. This test must be run by a user that can elevate
+ # their privileges using sudo.
+ #
++exit 77
++
+ source "${USBGUARD_TESTLIB_BASH}" || exit 129
+ 
+ #

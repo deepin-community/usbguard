@@ -1,0 +1,9 @@
+USBGuard DBus
+=============
+
+== Generating DBus documentation
+
+[source,bash]
+----
+include::generate-documentation.sh[]
+----

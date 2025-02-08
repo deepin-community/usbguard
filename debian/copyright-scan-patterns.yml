@@ -1,0 +1,14 @@
+---
+ignore:
+  pattern:
+    - debian/
+    - src/ThirdParty/
+    - configure
+    - Makefile.in
+    - aclocal.m4
+    - config
+check:
+  pattern:
+    - src/GUI.Qt/resources/
+    - src/Tests/custom.supp
+    - src/Tests/test-driver

@@ -1,4 +1,48 @@
 #!/usr/bin/make -f
+#export DH_VERBOSE = 1
+#for gen-orig-tgz:
+include /usr/share/dpkg/pkg-info.mk
+VERSION			?= $(shell echo '$(DEB_VERSION)' | sed -e 's/^[[:digit:]]*://' -e 's/[-].*//')
+GIT_TAG			?= upstream/$(shell echo '$(VERSION)' | sed -e 's/~/_/')
+DEBIAN_BRANCH	?= $(shell cat debian/gbp.conf | grep debian-branch | cut -d'=' -f2 | awk '{print $1}')
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+export DEB_LDFLAGS_MAINT_APPEND = -fPIE -pie
+export DEB_CXXFLAGS_MAINT_APPEND = -pthread -fPIE
+
+export deb_systemdsystemunitdir = $(shell pkg-config --variable=systemdsystemunitdir systemd | sed s,^/,,)
 
 %:
-	dh $@
+	dh ${@}
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	  --enable-static \
+	  --without-bundled-catch \
+	  --without-bundled-pegtl \
+	  --enable-systemd \
+	  --sysconfdir=/etc
+
+override_dh_missing:
+	dh_missing --list-missing
+
+
+gen-orig-tgz:
+	if [ ! -f ../$(DEB_SOURCE)_$(VERSION).orig.tar.gz ] ; then \
+		git archive --format=tar.gz --prefix=$(DEB_SOURCE)-$(VERSION)/ \
+		   $(GIT_TAG) >../$(DEB_SOURCE)_$(VERSION).orig.tar.gz ; \
+	fi
+
+override_dh_install:
+	if ! dh_install; then \
+		tree debian/tmp;    \
+		exit 1;    \
+	fi
+
+override_dh_installinit:
+	dh_installinit
+	dh_installinit -pusbguard --name=usbguard-dbus

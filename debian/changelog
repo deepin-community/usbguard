@@ -1,5 +1,391 @@
-template-repository (1.0-1) unstable; urgency=medium
+usbguard (1.1.3+ds-3) unstable; urgency=medium
 
-  * Initial release
+  * Drop org.usbguard1.pkla (Closes: #1093075)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Birger Schacht <birger@debian.org>  Wed, 15 Jan 2025 16:41:32 +0100
+
+usbguard (1.1.3+ds-2) unstable; urgency=medium
+
+  * Backport patch to allow building on loongarch, see
+    https://github.com/USBGuard/usbguard/pull/629
+    (Closes: #1073589)
+  * Bump Standards-Version to 4.7.0 (no changes required)
+  * Run wrap-and-sort -ast on debian/
+
+ -- Birger Schacht <birger@debian.org>  Fri, 16 Aug 2024 19:09:42 +0200
+
+usbguard (1.1.3+ds-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop backported patches
+  * Replace build-dep pkg-config with pkgconf
+
+ -- Birger Schacht <birger@debian.org>  Thu, 06 Jun 2024 21:43:59 +0200
+
+usbguard (1.1.2+ds-6) unstable; urgency=medium
+
+  * d/control: replace build dependency on systemd with systemd-dev
+    (Closes: #1060475)
+  * d/copyright: bump years
+  * d/*.lintian-overrides: dropping unused overrides and cleanup leftovers
+
+ -- Birger Schacht <birger@debian.org>  Sat, 13 Jan 2024 12:18:05 +0100
+
+usbguard (1.1.2+ds-5) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTBFS when systemd.pc changes systemdsystemunitdir. (Closes: #1052717)
+
+  [ Birger Schacht ]
+  * Fix d/gitlab-ci.yml to work with bare debian layout
+  * Add lintian-override for debian-news-entry-has-unknown-version
+    (this happens due to debhelper trimming the changelog)
+
+ -- Birger Schacht <birger@debian.org>  Sun, 08 Oct 2023 12:20:24 +0200
+
+usbguard (1.1.2+ds-4) unstable; urgency=medium
+
+  * Backport patch to fix build with GCC 13 (Closes: #1037881)
+  * d/copyright:
+   + Bump copyright years
+  * d/control:
+   + Bump standards-version to 4.6.2
+
+ -- Birger Schacht <birger@debian.org>  Tue, 18 Jul 2023 15:23:11 +0200
+
+usbguard (1.1.2+ds-3) unstable; urgency=medium
+
+  * Add org.usbguard.Devices1.applyDevicePolicy to the polkit pkla and rules
+    files
+
+ -- Birger Schacht <birger@debian.org>  Mon, 14 Nov 2022 15:59:34 +0100
+
+usbguard (1.1.2+ds-2) unstable; urgency=medium
+
+  * Drop symbols file.
+    https://wiki.debian.org/UsingSymbolsFiles#C.2B-.2B-_libraries:
+    "For C++ libraries it is often better not to ship symbols files."
+
+ -- Birger Schacht <birger@debian.org>  Sun, 16 Oct 2022 10:50:36 +0200
+
+usbguard (1.1.2+ds-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop patch that got merged upstream
+    (d/patches/0004-polkit-relax-read-only-operations-to-yes.patch)
+  * Build-Depends: Drop versioned constraint on dh-exec (thanks to
+    janitor-bot)
+  * usbguard-daemon.conf: Enable RuleFolder using
+    debian/patches/0004-usbguard-daemon.conf-Enable-RuleFolder.patch
+    (thanks to Sebastian Krzyszkowiak)
+  * Add a logrotate snipped using dh_installlogrotate (Closes: #1018755,
+    thanks to Klaus Singvogel)
+
+ -- Birger Schacht <birger@debian.org>  Fri, 07 Oct 2022 10:37:27 +0200
+
+usbguard (1.1.1+ds-8) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Birger Schacht <birger@debian.org>  Sat, 03 Sep 2022 08:59:43 +0200
+
+usbguard (1.1.1+ds-7) experimental; urgency=medium
+
+  * Fix symbols file
+  * Bump standards-version to 4.6.1.0 (no changes required)
+  * Fix lintian-overrides
+
+ -- Birger Schacht <birger@debian.org>  Sun, 31 Jul 2022 18:09:27 +0200
+
+usbguard (1.1.1+ds-6) experimental; urgency=medium
+
+  * Introduce public development file package, now that upstream considers the
+    library to be stable (Closes: #961374)
+
+ -- Birger Schacht <birger@debian.org>  Mon, 13 Jun 2022 17:30:32 +0200
+
+usbguard (1.1.1+ds-5) unstable; urgency=medium
+
+  * Use uscans gitmode to fix d/watch
+  * Remove unused ldap dependency (Closes: #1007973)
+
+ -- Birger Schacht <birger@debian.org>  Mon, 13 Jun 2022 17:12:30 +0200
+
+usbguard (1.1.1+ds-4) unstable; urgency=medium
+
+  * Add polkit pkla and rules files to allow users in plugdev and sudo groups
+    to run usbguard actions without authentication (Closes: #1009074)
+
+ -- Birger Schacht <birger@debian.org>  Wed, 18 May 2022 18:20:37 +0200
+
+usbguard (1.1.1+ds-3) unstable; urgency=medium
+
+  * Backport patch to relax polkit read-only operations policy
+    (d/patches/0004-polkit-relax-read-only-operations-to-yes.patch)
+    See https://github.com/USBGuard/usbguard/pull/545
+
+ -- Birger Schacht <birger@debian.org>  Wed, 13 Apr 2022 21:25:49 +0200
+
+usbguard (1.1.1+ds-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Birger Schacht <birger@debian.org>  Wed, 06 Apr 2022 14:15:07 +0200
+
+usbguard (1.1.1+ds-1) experimental; urgency=medium
+
+  * New upstream release
+  * Add more overrides to d/usbguard.lintian-overrides
+
+ -- Birger Schacht <birger@debian.org>  Wed, 16 Mar 2022 10:07:54 +0100
+
+usbguard (1.1.0+ds-1) experimental; urgency=medium
+
+  * New upstream release
+  * Drop Don-t-use-the-symlink-var-run-but-use-run-directly patch (was
+    included upstream)
+  * Bump standards-version to 4.6.0.1 (no changes required)
+  * Drop filenamemangle option from d/watch
+  * Drop superfluous-file-pattern from d/copyright
+  * Amend copyright entry for debian/* in d/copyright
+  * Fix lintian override
+
+ -- Birger Schacht <birger@debian.org>  Fri, 11 Mar 2022 12:07:24 +0100
+
+usbguard (1.0.0+ds-2) unstable; urgency=medium
+
+  * Fix policy generation in postinst in chroot (Closes: #981759)
+
+ -- Birger Schacht <birger@debian.org>  Sat, 06 Feb 2021 10:19:09 +0100
+
+usbguard (1.0.0+ds-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #980073)
+  * d/control: Bump Standards-Version to 4.5.1 (no changes required)
+  * d/watch: Bump watchfile version to 4
+  * d/patches: update patches and add patch to use /run instead of /var/run in
+    the usbguard systemd service file
+
+ -- Birger Schacht <birger@debian.org>  Thu, 14 Jan 2021 16:32:22 +0100
+
+usbguard (0.7.8+ds-2) unstable; urgency=medium
+
+  * Bump libqb dependency and drop patch that was used as
+    a workaround for the libpq bug
+    (See https://github.com/USBGuard/usbguard/issues/289)
+  * Adjust maintainer address and Vcs-* URLs
+
+ -- Birger Schacht <birger@debian.org>  Thu, 17 Sep 2020 10:05:12 +0200
+
+usbguard (0.7.8+ds-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #958197)
+  * Replace 0004-Patch-ReadWritePaths-and-CapabilityBoundingSet.patch
+    with 0004-Modify-CapabilityBoundingSet.patch (one problem the patch
+    addressed was fixed upstream)
+  * Drop 0005-Remove-traces-of-dbus-glib-1.patch (was included upstream)
+  * d/control: Bump debhelper-compat version to 13
+
+ -- Birger Schacht <birger@rantanplan.org>  Tue, 26 May 2020 10:06:10 +0200
+
+usbguard (0.7.6+ds-2) unstable; urgency=medium
+
+  * d/control:
+    Remove libdbus-glib-1-dev build dependency and patch
+    upstream config scripts accordingly (Closes: #955852)
+    See also https://github.com/USBGuard/usbguard/pull/371
+  * Bump standards version to 4.5.0 (no changes required)
+
+ -- Birger Schacht <birger@rantanplan.org>  Sun, 05 Apr 2020 17:38:55 +0200
+
+usbguard (0.7.6+ds-1) unstable; urgency=medium
+
+  * New upstream version 0.7.6
+  * d/watch: Adapt extension of upstream signature
+  * d/upstream/signing-key.asc: Replace signing key with
+    key from rsroka@redhat.com
+  * d/patches: Update
+    0004-Patch-ReadWritePaths-and-CapabilityBoundingSet.patch
+  * d/control: Bump standards version to 4.4.1 (no changes required)
+
+ -- Birger Schacht <birger@rantanplan.org>  Fri, 15 Nov 2019 17:08:13 +0100
+
+usbguard (0.7.5+ds-1) unstable; urgency=medium
+
+  * New upstream version 0.7.5 (Closes: #923542)
+    The upstream source does not contain the qt applet anymore.
+   + Remove usbguard-applet-qt package and qt build dependencies
+     from d/control
+   + Remove qt specific lines from d/rules
+   + Remove applet .desktop and .install files from debian/
+     directory
+   + Remove stale copyright paragraphs from d/copyright
+   + d/upstream/signing-key.asc: Update upstreams signing key to
+     0xEF3F1EF2C1D2077F4BD74BC1F0B58180D5CD7168
+   + d/patches/disable-002_cli_devices.patch: Update patch
+
+  * d/usbguard.install: Use more placeholders to make file more
+    readable and add zsh completion file
+
+  * d/usbguard.postinst: generate initial policy on install using
+    `usbguard generate-policy` and enable `plugdev` access using
+    IPC ACLs
+
+  * d/rules
+   + Add dh_install override to ease package maintaince
+     (it lists files in debian/tmp)
+   + Remove void configure flag
+   + Add -pthread to LDFLAGS (Closes: #931381)
+   + Reenable and start systemd services on install, now that there
+     is an initial rules file being generated (Closes: #928032)
+
+  * d/control
+   + Add libumockdev build dependency, enable ldap support
+     by adding libldap2-dev build dependency
+   + Bump debhelper to version 12, replace the build dependency
+     with debhelper-compat and remove the d/compat file
+   + Update the homepage URL
+   + Add rules-requires-root: no
+   + Bump standards version to 4.4.0
+   + Add a Breaks relationship for the applet, that is not shipped
+     with usbguard anymore
+
+  * Add init scripts for usbguard-dbus and usbguard (Closes: #846400)
+
+  * d/patches
+   + Rename change-ipc-allowedgroup.patch to
+     0001-Set-IPCAllowedGroups-to-root-plugdev.patch and add the plugdev
+     group to the list of groups allowed to use the IPC interface
+   + Patch systemd service file to allow write access to rules file and
+     fix IPC ACLs
+     0004-Patch-ReadWritePaths-and-CapabilityBoundingSet.patch
+
+  * d/gitlab-ci.yml: switch to the salsa-ci-team pipeline
+
+  * d/usbguard.README.Debian: add a Debian specific README with the
+    most basic instructions
+
+  * d/usbguard-daemon.conf: remove modified config file, as we are using
+    the upstream one since a few versions
+
+ -- Birger Schacht <birger@rantanplan.org>  Fri, 26 Jul 2019 18:52:01 +0200
+
+usbguard (0.7.4+ds-1) unstable; urgency=medium
+
+  * New upstream version 0.7.4
+    + Replace pegt-dev with tao-pegtl-dev
+    + Replace asciidoctor with asciidoc-base and docbook
+
+  * Friendly takeover of the package from Muri
+
+  * Override dh_installsystemd to not enable service on installation. Also
+    don't start the service after installation, so people don't get locked
+    out. (Closes: #908037)
+  * Bump the standards version
+  * Replace the dpkg-buildflags calls with the new buildflags.mk file
+  * Remove debian/gbp.conf because the defaults are used
+  * Add a debian/gitlab-ci.yml file to automatically test the build on
+    salsa
+
+ -- Birger Schacht <birger@rantanplan.org>  Wed, 12 Sep 2018 16:41:46 +0200
+
+usbguard (0.7.2+ds-2) unstable; urgency=medium
+
+  * Add a postrm file to clean up on purge (Closes: #905524)
+
+ -- Muri Nicanor <muri@immerda.ch>  Tue, 07 Aug 2018 18:16:40 +0200
+
+usbguard (0.7.2+ds-1) unstable; urgency=medium
+
+  * New upstream version 0.7.2
+   + Fix failure with read-only /etc (Closes: #868160)
+   + Fix usbguard leaking filehandles (Closes: #887671)
+   + Update upstream's signing key
+   + Remove upstreamed patches
+   + Add build dependencies on libaudit and asciidoctor
+   + Update debian/copyright
+
+  * Switch to debhelper 11
+   + Remove dh-systemd
+     It is part of debhelper (>= 9.20160709)
+   + Use dh_missing
+
+  * Bump standards version to 4.1.3
+   + debian/copyright: Use HTTPS format URI
+
+  * Update debian/watch
+  * Move the packaging repository to salsa.d.o
+  * Add metadata for scan-copyrights
+  * Set libusbguard0's section to lib
+  * debian/rules: Do not parse dpkg-genchangelog
+  * Add a postinstall script to fix file permissions in /etc/usbguard
+
+ -- Muri Nicanor <muri@immerda.ch>  Tue, 16 Jan 2018 19:28:35 +0100
+
+usbguard (0.7.0+ds1-2) unstable; urgency=medium
+
+  * Remove qt4 dependencies (Closes: #875220)
+  * Backport patch for multiple applet instances
+    (Closes: #871997)
+  * Backport patch to make UEventDeviceManager work
+    with kernel >= 4.13 (Closes: #875808)
+
+ -- Muri Nicanor <muri@immerda.ch>  Mon, 18 Sep 2017 19:41:54 +0200
+
+usbguard (0.7.0+ds1-1) unstable; urgency=medium
+
+  * New upstream version 0.7.0 (Closes: #864821)
+    This release contains a backwards incompatible
+    change because it changes how the device hash is
+    computed for Linux root hub devices
+  * Add support for bash-completion
+  * Delete add-unistd.patch, its not needed anymore
+  * Compile the library static, to make `make check` work
+  * Bump compat version to 10
+  * Add d/usbguard.dirs
+  * add apsell for spell checking test
+  * disable test 002_cli_devices as the needed kernel
+    modules are not shipped in debian
+  * remove the unused dependency for nlohmann-json-dev
+    (Closes: #868514)
+
+ -- Muri Nicanor <muri@immerda.ch>  Thu, 18 May 2017 17:44:29 +0200
+
+usbguard (0.6.2+ds1-2) unstable; urgency=medium
+
+  * Add dbus to Depends (Closes: #854192)
+
+ -- Muri Nicanor <muri@immerda.ch>  Sun, 05 Feb 2017 08:21:56 +0100
+
+usbguard (0.6.2+ds1-1) unstable; urgency=medium
+
+  * New upstream version 0.6.2+ds1
+  * Add xdg autostart file to usbguard-applet-qt (Closes: #838173)
+  * fixed upstream version tag
+  * set default compilder and linker flags
+  * changed the location of libusbguard.so.0 to a private directory
+    and set the rpath accordingly
+  * remove the fix-mips-build patch, it was included upstream
+  * remove the development file package, because the library is not
+    stable for now
+
+ -- Muri Nicanor <muri@immerda.ch>  Thu, 08 Dec 2016 11:16:28 +0100
+
+usbguard (0.5.14+ds1-2) unstable; urgency=medium
+
+  * d/control:
+   - Add systemd to build dependencies (Closes: #836713)
+   - Change architectures to linux-any in d/control
+  * d/rules
+   - Add sysconfdir flag to autoconf (Closes: #837176)
+  * d/patches/
+   - Fix mips build (Closes: #836712)
+   - Set correct IPCAllowedGroups (Closes: #837175)
+
+ -- Muri Nicanor <muri@immerda.ch>  Tue, 13 Sep 2016 18:39:53 +0200
+
+usbguard (0.5.14+ds1-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #791919)
+
+ -- Muri Nicanor <muri@immerda.ch>  Sat, 13 Aug 2016 16:40:34 +0200
