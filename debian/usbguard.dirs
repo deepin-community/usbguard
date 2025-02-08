@@ -1,0 +1,3 @@
+etc/usbguard/IPCAccessControl.d/
+etc/usbguard/rules.d/
+var/log/usbguard/

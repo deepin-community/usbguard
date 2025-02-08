@@ -1,0 +1,2 @@
+# this file is part of a usbguard testcase
+very-long-line-length-in-source-file 2224 > 512 [src/Tests/UseCase/devices.umockdev:196]

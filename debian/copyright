@@ -1,9 +1,38 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+Upstream-Name: usbguard
+Source: https://github.com/dkopecek/usbguard
+Files-Excluded: src/Tests/USB/data/0001.bin src/Tests/USB/data/0001.out src/ThirdParty
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
+Copyright: 2015-2017, Red Hat, Inc.
+License: GPL-2+
+Upstream-Contact: Daniel Kopeček <dkopecek@redhat.com>
+
+Files: debian/*
+Copyright: 2016, 2017, Muri Nicanor <muri@immerda.ch>
+           2018-2024 Birger Schacht <birger@debian.org>
+License: GPL-2+
+
+Files: m4/*
+Copyright: 1994-2015, Free Software Foundation, Inc.
+License: FSFULLR
+
+Files: m4/ax_check_compile_flag.m4
+Copyright: 2011, Maarten Bosmans <mkbosmans@gmail.com>
+  2008, Guido U. Draheim <guidod@gmx.de>
+License: GPL-3+
+
+Files: src/Tests/custom.supp
+Copyright: n/a
+License: public-domain
+
+License: FSFULLR
+ Copyright 1996-2006 Free Software Foundation, Inc.
+ .
+ This file is free software; the Free Software Foundation gives unlimited
+ permission to copy and/or distribute it, with or without modifications, as long
+ as this notice is preserved.
+
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,7 +45,30 @@ License: GPL-2+
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
+ along with this program. If not, see <http://www.gnu.org/licenses/>
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: public-domain
+ The file tagged with this license is released under public domain:
+ .
+ No Copyright
+ This file has been released into the public domain.

@@ -1,0 +1,6 @@
+# usbguard.service intentionally and correctly has WantedBy=basic.target.
+systemd-service-file-refers-to-unusual-wantedby-target basic.target [usr/lib/systemd/system/usbguard.service]
+# false positive, it refers to /usr/sbin/usbguard-daemon
+bin-sbin-mismatch usr/sbin/usbguard -> usr/bin/usbguard [etc/init.d/usbguard]
+# false positive, it refers to /usr/sbin/usbguard-dbus
+bin-sbin-mismatch usr/sbin/usbguard -> usr/bin/usbguard [etc/init.d/usbguard-dbus]

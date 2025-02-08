@@ -1,0 +1,9 @@
+usbguard (0.7.0+ds1-1) unstable; urgency=medium
+
+   This release contains a backwards incompatible
+   change: it changes how the device hash is
+   computed for Linux root hub devices. This means
+   that the hashes in the usbguard rules file from
+   the previous version won't match anymore.
+
+ -- Muri Nicanor <muri@immerda.ch>  Sun, 09 Jul 2017 17:03:49 +0200

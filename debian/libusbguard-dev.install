@@ -1,0 +1,4 @@
+usr/include/usbguard/
+usr/lib/*/libusbguard.a
+usr/lib/*/libusbguard.so
+usr/lib/*/pkgconfig/libusbguard.pc

@@ -1,0 +1,53 @@
+---
+m4/libgcrypt.m4:
+  copyright: 2002, 2004, 2011 Free Software Foundation, Inc.
+  license: FSFULLR
+m4/ltoptions.m4:
+  copyright: 2002, 2004, 2011 Free Software Foundation, Inc.
+  license: FSFULLR
+m4/ltsugar.m4:
+  copyright: 2002, 2004, 2011 Free Software Foundation, Inc.
+  license: FSFULLR
+m4/ltversion.m4:
+  copyright: 2002, 2004, 2011 Free Software Foundation, Inc.
+  license: FSFULLR
+m4/lt~obsolete.m4:
+  copyright: 2002, 2004, 2011 Free Software Foundation, Inc.
+  license: FSFULLR
+m4/libtool.m4:
+  copyright: 1996-2001, 2003-2015 Free Software Foundation, Inc.
+  override-license: FSFULLR
+src/DBus/usbguard-dbus.service.in:
+  skip: '1'
+src/DBus/org.usbguard.service.in:
+  skip: '1'
+src/GUI.Qt/usbguard-applet-qt.desktop.in:
+  skip: '1'
+src/astylerc:
+  skip: '1'
+usbguard-daemon.conf.in:
+  skip: '1'
+usbguard.service.in:
+  skip: '1'
+libusbguard.pc.in:
+  skip: '1'
+README.adoc:
+  skip: '1'
+CHANGELOG.md:
+  skip: '1'
+LICENSE:
+  skip: '1'
+VERSION:
+  skip: '1'
+src/GUI.Qt/resources/:
+  copyright: Daniel Kopeček
+  license: CC-BY-SA-3.0
+src/Tests/custom.supp:
+  copyright: n/a
+  license: public-domain
+src/Tests/Makefile.in:
+  copyright: 1994-2014 Free Software Foundation, Inc.
+  license: FSFULLR
+src/Tests/test-driver:
+  copyright: 1994-2014 Free Software Foundation, Inc.
+  license: FSFULLR

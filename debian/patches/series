@@ -1,0 +1,4 @@
+disable-002_cli_devices.patch
+0001-Set-IPCAllowedGroups-to-root-plugdev.patch
+0003-disable-test-that-depends-on-binary-data.patch
+0004-Add-support-for-longarch.patch

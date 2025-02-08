@@ -1,0 +1,3 @@
+# https://wiki.debian.org/UsingSymbolsFiles#C.2B-.2B-_libraries:
+# For C++ libraries it is often better not to ship symbols files.
+no-symbols-control-file usr/lib/x86_64-linux-gnu/libusbguard.so.1.0.1

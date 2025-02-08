@@ -1,0 +1,21 @@
+From: Muri Nicanor <muri@immerda.ch>
+Date: Mon, 3 Jul 2017 22:33:36 +0200
+Subject: disable-test-that-depends-on-binary-data
+
+Forwarded: not-needed
+---
+ src/Tests/USB/test-descriptor-parser.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Tests/USB/test-descriptor-parser.sh b/src/Tests/USB/test-descriptor-parser.sh
+index 97e7e91..fe9ae8a 100755
+--- a/src/Tests/USB/test-descriptor-parser.sh
++++ b/src/Tests/USB/test-descriptor-parser.sh
+@@ -24,6 +24,7 @@
+ # Usage: test-descriptor-parser.sh <usbguard-binary-path> <test-data-dir>
+ #        test-descriptor-parser.sh
+ #
++exit 77
+ 
+ if [ -z "$1" -o -z "$2" ]; then
+   USBGUARD="$builddir/usbguard"

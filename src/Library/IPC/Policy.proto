@@ -1,0 +1,68 @@
+package usbguard.IPC;
+
+import "Message.proto";
+import "Rule.proto";
+
+message listRulesRequest {
+  required string label = 1;
+}
+
+message listRulesResponse {
+  repeated Rule rules = 1;
+}
+
+message listRules {
+  required MessageHeader header = 1;
+  required listRulesRequest request = 2;
+  optional listRulesResponse response = 3;
+}
+
+
+message appendRuleRequest {
+  required string rule = 1;
+  required uint32 parent_id = 2;
+  required bool permanent = 3;
+}
+
+message appendRuleResponse {
+  required uint32 id = 1;
+}
+
+message appendRule {
+  required MessageHeader header = 1;
+  required appendRuleRequest request = 2;
+  optional appendRuleResponse response = 3;
+}
+
+
+message removeRuleRequest {
+  required uint32 id = 1;
+}
+
+message removeRuleResponse {
+  required uint32 id = 1;
+}
+
+message removeRule {
+  required MessageHeader header = 1;
+  required removeRuleRequest request = 2;
+  optional removeRuleResponse response = 3;
+}
+
+
+message checkIPCPermissionsRequest {
+  required uint32 uid = 1;
+  required uint32 gid = 2;
+  required string section = 3;
+  required string privilege = 4;
+}
+
+message checkIPCPermissionsResponse {
+  required bool permit = 1;
+}
+
+message checkIPCPermissions {
+  required MessageHeader header = 1;
+  required checkIPCPermissionsRequest request = 2;
+  optional checkIPCPermissionsResponse response = 3;
+}

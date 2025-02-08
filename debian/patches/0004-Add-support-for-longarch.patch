@@ -1,0 +1,31 @@
+From 5e9a91a667baa4a24d339b3be5f0d8222a3acab2 Mon Sep 17 00:00:00 2001
+From: wuruilong <wuruilong@loongson.cn>
+Date: Mon, 17 Jun 2024 20:03:35 +0800
+Subject: [PATCH] Add support for loongarch
+
+---
+ src/Daemon/Seccomp.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/Daemon/Seccomp.c b/src/Daemon/Seccomp.c
+index 71a3d1e9..a9604104 100644
+--- a/src/Daemon/Seccomp.c
++++ b/src/Daemon/Seccomp.c
+@@ -23,6 +23,7 @@
+ #include "Seccomp.h"
+ 
+ #if defined(HAVE_SECCOMP)
++  #include <asm/unistd.h>
+   #include <seccomp.h>
+   #include <errno.h>
+   #include <sys/resource.h>
+@@ -51,7 +52,9 @@ bool setupSeccompWhitelist(void)
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(read), 0);
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(open), 0);
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(openat), 0);
++#ifdef __NR_fstat
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(fstat), 0);
++#endif
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(lstat), 0);
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(fcntl), 0);
+   ret |= seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(unlink), 0);

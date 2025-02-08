@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+        "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+
+<policyconfig>
+  <vendor>The USBGuard Project</vendor>
+  <vendor_url>https://github.org/USBGuard/usbguard</vendor_url>
+
+  <action id="org.usbguard.Policy1.listRules">
+    <description>List the rule set (policy) used by the USBGuard daemon</description>
+    <message>Prevents listing the USBGuard policy</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard.Policy1.appendRule">
+    <description>Append a new rule to the policy</description>
+    <message>Prevents appending rules to the USBGuard policy</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard.Policy1.removeRule">
+    <description>Remove a rule from the policy</description>
+    <message>Prevents removing rules from the USBGuard policy</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard.Devices1.applyDevicePolicy">
+    <description>Apply a policy to a device in USBGuard</description>
+    <message>Prevents applying a policy to a device in USBGuard</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard.Devices1.listDevices">
+    <description>List all USB devices recognized by the USBGuard daemon</description>
+    <message>Prevents listing USB devices recognized by the USBGuard daemon</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard1.getParameter">
+    <description>Get the value of a runtime parameter</description>
+    <message>Prevents getting values of runtime USBGuard parameters</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.usbguard1.setParameter">
+    <description>Set the value of a runtime parameter</description>
+    <message>Prevents setting values of runtime USBGuard parameters</message>
+    <defaults>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+</policyconfig>
+

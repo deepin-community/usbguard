@@ -1,0 +1,23 @@
+Usbguard on Debian
+------------------
+
+Since usbguard 0.7.5 the debian package creates an initial policy at
+installation time using the `usbguard generate-policy` subcommand. This
+generates an allow policy for all connected usb devices.
+
+To list all devices with the current active rules use `usbguard list-devices`.
+
+To allow a blocked device, use `usbguard allow-device <id>` where is the id
+listed at the beginning of the line of the `list-devices` output. To block a
+device use `usbguard block-device`. To allow or block a device permanently use
+the `-p` switch for the `allow-device` or `block-device` subcommands.
+You can list the permanent rules using `usbgurad list-rules`.
+
+# usbguard IPC interface
+
+Usbguard is configured to allow the `plugdev` group access to its IPC
+interface. This is done on the one hand through the IPCAllowedGroups directive
+in /etc/usbguard/usbguard-daemon.conf and also using an IPCAccessControlFile
+that is created at install time in /etc/usbguard/IPCAccessControl.d/ (usbguard
+ignores the IPCAllowedGroups directive when using control files. Using
+IPCAccessControlFiles is recommended by upstream).
